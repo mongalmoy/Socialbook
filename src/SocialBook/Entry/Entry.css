@@ -1,0 +1,220 @@
+.register-page {
+  /* background-image: linear-gradient(
+    to right,
+    rgb(7, 161, 189),
+    rgb(28, 29, 124)
+  ); */
+  background-image: url("../../assets/img/socialmedia1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: 0;
+}
+.register-page .row {
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+}
+.left-div .logo {
+  padding: 20px;
+  margin: 0 20px;
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-div .logo img {
+  border-radius: 50%;
+  height: 150px;
+}
+.left-div .name {
+  padding: 0 20px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-div .name p {
+  margin: 10px;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+.left-div .welcome {
+  padding: 0 20px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-div .welcome p {
+  font-size: 35px;
+  padding: 10px;
+  font-weight: 800px;
+}
+.left-div .about-us {
+  padding: 0 20px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-div .about-us a {
+  background-color: #fff;
+  color: #3d3939;
+  text-decoration: none;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 20px;
+  transition: all ease 0.5s;
+}
+.left-div .about-us a:hover {
+  width: 160px;
+}
+.right-div {
+  width: 650px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.right-div .form-div {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.form-div form .register-form .heading-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  margin-top: 40px;
+  color: black;
+}
+.form-div form .register-form .heading-div h1 {
+  font-weight: 800;
+}
+.form-div form .register-form .input-name {
+  margin-bottom: 10px;
+}
+.form-div form .register-form .input-name input {
+  outline: none;
+  width: 100%;
+  height: 35px;
+  color: #041c32;
+  padding-left: 5px;
+}
+.form-div form .register-form .input-year select {
+  color: #5c6063;
+  outline: none;
+  width: 150px;
+  height: 35px;
+  padding-left: 5px;
+  margin-bottom: 15px;
+}
+.form-div form .register-form .input-year .input-department {
+  color: #5c6063;
+  outline: none;
+  width: 290px;
+  height: 35px;
+  padding-left: 5px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+.form-div form .register-form .current-position input {
+  width: 100%;
+  height: 35px;
+  color: #041c32;
+  padding-left: 5px;
+  margin-bottom: 15px;
+}
+.form-div form .register-form .input-email {
+  margin-bottom: 15px;
+}
+.form-div form .register-form .input-email input {
+  outline: none;
+  width: 100%;
+  height: 35px;
+  color: #041c32;
+  padding-left: 5px;
+}
+.input-email span {
+  margin-left: 10px;
+  height: 35px;
+  background-color: green;
+  opacity: 0.8;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-email span:hover {
+  opacity: 1;
+}
+.verified {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.verified span {
+  display: none;
+  position: absolute;
+  right: -75px;
+  top: 4px;
+  padding: 0 8px;
+  height: 24px;
+  margin-left: 5px;
+  background-color: #2c2c2c;
+  color: #fff;
+  cursor: none;
+  transition: all 0.5s ease;
+}
+.verified:hover span {
+  display: block;
+}
+.form-div form .register-form .input-password input {
+  outline: none;
+  width: 100%;
+  height: 35px;
+  color: #041c32;
+  padding-left: 5px;
+  margin-bottom: 15px;
+}
+.form-div form .register-form .confirm-otp input {
+  outline: none;
+  padding-left: 5px;
+  height: 35px;
+  width: 100%;
+  color: #041c32;
+  margin-bottom: 15px;
+}
+.form-div form .register-form .register-button {
+  position: relative;
+  width: 100%;
+  height: 70px;
+}
+
+.right-div .convert-div {
+  z-index: 99;
+}
+.right-div .convert-div p {
+  color: #5c6063;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+}
+.right-div .convert-div p b {
+  cursor: pointer;
+}
