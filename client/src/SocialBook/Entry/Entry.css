@@ -59,7 +59,8 @@
   align-items: center;
   justify-content: center;
 }
-.left-div .about-us a {
+.about-us b {
+  cursor: pointer;
   background-color: #fff;
   color: #3d3939;
   text-decoration: none;
@@ -74,7 +75,7 @@
   border-radius: 20px;
   transition: all ease 0.5s;
 }
-.left-div .about-us a:hover {
+.about-us b:hover {
   width: 160px;
 }
 .right-div {

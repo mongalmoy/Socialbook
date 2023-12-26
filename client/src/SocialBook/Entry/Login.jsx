@@ -9,9 +9,6 @@ const Login = () => {
       <Row>
         <Col lg={5} md={5} sm={5} className="flexbox flex-d-col">
           <div className="left-div">
-            {/* <div className="logo">
-              <img src={""}></img>
-            </div> */}
             <div className="name">
               <p>JOIN US</p>
             </div>
@@ -19,9 +16,7 @@ const Login = () => {
               <p>Welcome to Jolu Book !</p>
             </div>
             <div className="about-us">
-              <a href="#" target="_blank">
-                About Us
-              </a>
+              <b onClick={() => navigate("/about")}>About Us</b>
             </div>
           </div>
         </Col>
