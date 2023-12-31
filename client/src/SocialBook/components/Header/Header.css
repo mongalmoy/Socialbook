@@ -1,0 +1,118 @@
+/*************** Header css starts *********************/
+.header nav {
+   height: 9vh;
+}
+.nav_container {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+#navbarNav {
+   font-size: 25px;
+   width: 100%;
+   position: relative;
+}
+
+#navbarNav ul {
+   position: absolute;
+   right: 10px;
+}
+
+#navbarNav ul li {
+   display: flex;
+   justify-content: center;
+}
+
+
+#navbarNav ul .nav-link-img {
+   padding: 0;
+   width: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#navbarNav ul .nav-link-img div {
+   height: 50px;
+   width: 50px;
+}
+
+#navbarNav ul .nav-link-img div img {
+   padding: 0;
+   margin: 0;
+   border-radius: 50%;
+   height: 45px;
+   width: 50px;
+   object-fit: cover;
+}
+
+#userName{
+   font-size: 18px;
+   font-weight: 700;
+   margin-top: 12px;
+}
+
+#navbarNav ul li a i {
+   font-size: 24px;
+   font-weight: 700px;
+   color: #202020;
+   opacity: 0.8;
+}
+
+#navbarNav ul li a:hover i {
+   opacity: 0.9;
+}
+
+.envelop-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 10px;
+   cursor: pointer;
+}
+#user_name {
+   color: #202020;
+   margin-left: 6px;
+   font-weight: 700;
+   cursor: pointer;
+}
+
+.user_account_details {
+   position: relative;
+}
+.user_dropdown.show_dropdown {
+   position: absolute;
+   top: 50px;
+   right: -8px;
+   z-index: 99;
+   display: flex;
+   flex-direction: column;
+   padding: 0;
+}
+.user_dropdown.hide_dropdown {
+   display: none;
+}
+.user_dropdown_item {
+   display: flex;
+   align-items: center;
+   justify-content: start;
+   padding: 4px 16px;
+}
+.user_dropdown_item:hover {
+   background-color: #ececec;
+   cursor: pointer;
+}
+.user_dropdown_item a {
+   text-decoration: none;
+   color: #646464;
+   font-weight: 400;
+   transition: all 0.2s ease;
+}
+.user_dropdown_item:hover a {
+   color: #282828;
+   font-weight: 600;
+}
+
+
+/*************** Header css ends *********************/

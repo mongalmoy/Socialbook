@@ -1,9 +1,44 @@
+import { useState } from "react";
 import "./Entry.css";
 import { Col, Row, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
+
+  const [formInfo, setFormInfo] = useState({
+    username: "",
+    email: "",
+    password: "",
+  })
+  const [errors, setErrors] = useState(null)
+
+  console.log("formInfo", formInfo);
+  console.log("errors", errors);
+
+  const validateEmail = (email) => {
+    console.log(email.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/));
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if(!!!formInfo.username) setErrors(prev => ({...prev, username: "please enter username"}));
+    else setErrors(prev => ({username: ""}));
+
+    if(!!!formInfo.email) setErrors(prev => ({...prev, email: "please enter email"}));
+    // else if(validateEmail(formInfo.email)) setErrors(prev => ({...prev, email: "please enter valid email"}));
+    else setErrors(prev => ({email: ""}));
+
+    if(!!!formInfo.password) setErrors(prev => ({...prev, password: "please enter password"}));
+    else setErrors(prev => ({password: ""}));
+  }
+
   return (
     <div className="register-page">
       <Row>
@@ -24,7 +59,7 @@ const Register = () => {
         <Col className="flexbox flex-d-col">
           <div className="right-div">
             <div className="form-div">
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <div className="register-form" style={{ width: "400px" }}>
                   <div className="heading-div">
                     <h1>Register Here</h1>
@@ -32,18 +67,24 @@ const Register = () => {
                   <div className="input-email">
                     <input
                       placeholder="Username"
-                      type="email"
+                      type="text"
                       name="username"
+                      required
+                      minLength={6}
+                      maxLength={12}
+                      onChange={(e) => setFormInfo(prev => ({...prev, [e.target.name]: e.target.value}))}
                     />
                   </div>
                   <div className="input-email" style={{ display: "flex" }}>
                     <input
                       placeholder="Email"
                       type="email"
-                      name="username"
+                      name="email"
                       required
+                      onChange={(e) => setFormInfo(prev => ({...prev, [e.target.name]: e.target.value}))}
                     />
-                    <span id="registerPageVerifyButton" onclick="otpPopup()">
+                    <span id="registerPageVerifyButton" onClick={null // otpPopup
+                    }>
                       Verify
                     </span>
                     <div className="verified">
@@ -66,6 +107,9 @@ const Register = () => {
                       placeholder="Password"
                       type="password"
                       name="password"
+                      minLength={6}
+                      required
+                      onChange={(e) => setFormInfo(prev => ({...prev, [e.target.name]: e.target.value}))}
                     />
                   </div>
                   <div className="align_right">

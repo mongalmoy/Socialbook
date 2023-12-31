@@ -1,0 +1,164 @@
+#feed {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   flex-direction: column;
+   gap: 10px;
+   padding: 20px 32px;
+   height: calc(100vh - 9vh);
+   overflow-y: scroll;
+}
+
+
+/************ Posts css starts******************/
+.post {
+   width: 50%;
+   background-color: #fff;
+   border-radius: 10px;
+}
+.user-profile-container {
+   position: relative;
+   height: 75px;
+   margin: 0 12px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.user_img_info{
+   position: relative;
+}
+.user-profile-container .user-img {
+   width: 50px;
+   height: 50px;
+}
+
+.user-profile-container .user-img img{
+   height: 100%;
+   width: 100%;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+.user-info {
+   margin: 0 6px;
+   padding: 0;
+   height: 80px;
+   display: flex;
+   align-items: flex-start;
+   justify-content: center;
+   flex-direction: column;
+}
+/* 99A799 */
+.user-info p {
+   margin: 0;
+   padding: 0;
+}
+.user-name {
+   color: black;
+   font-weight: 400;
+}
+.user-info .user-bio {
+   color: #99A799;
+   font-size: 12px;
+}
+.user-profile-container .post-time-div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 150px;
+   height: 20px;
+   position: absolute;
+   right: 0;
+   bottom: 10px;
+   font-size: 12px;
+}
+.user-profile-container .post-time-div i {
+   color: #99A799;
+   font-size: 12px;
+   display: inline;
+}
+.user-profile-container .post-time-div  p {
+   color: #99A799;
+   font-size: 12px;
+   display: inline;
+   margin: 0;
+   padding: 0;
+   margin-left: 3px;
+   padding-left: 1px;
+}
+.posttextstyle{
+ white-space:pre-wrap;
+}
+.user-profile-container .three-dots {
+   height: 30px;
+   width: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 50%;
+   font-size: 24px;
+   cursor: pointer;
+   position: relative;
+   margin-right: 6pxnp;
+}
+.user-profile-container .three-dots:hover {
+   background-color: #ddd;
+}
+.user-profile-container .three-dots i {
+   font-size: 25px;
+   cursor: pointer;
+}
+.outer-display-edit-div {
+   z-index: 100;
+   position: absolute;
+   right: 5px;
+   top: 35px;
+   width: 250px;
+   background-color: #e7e7e7;
+   padding: 5px 0;
+   border-radius: 5px;
+   display: none;
+}
+.outer-display-edit-div {
+   display: block;
+}
+.outer-display-edit-div .item {
+   display: flex;
+   height: 50px;
+   width: 100%;
+   cursor: pointer;
+}
+.outer-display-edit-div .item:hover {
+   background-color: #b8b8b8;
+}
+
+.outer-display-edit-div .item-icon {
+   width: 40px;
+   height: 50px;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.outer-display-edit-div .item .item-icon i {
+   font-size: 18px;
+}
+.outer-display-edit-div .item .item-contents {
+   height: 50px;
+   width: calc(100% - 40px);
+   display: flex;
+   align-items: center;
+}
+.outer-display-edit-div .item .item-contents p {
+   padding: 0;
+   margin: 0;
+}
+.outer-display-edit-div .item .item-contents p:nth-child(1) {
+   font-size: 14px;
+   font-weight: 500;
+}
+.outer-display-edit-div .item .item-contents p:nth-child(2) {
+   font-size: 12px;
+   font-weight: 400;
+}
+/************ Posts css ends *****************/
