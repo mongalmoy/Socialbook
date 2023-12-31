@@ -3,7 +3,7 @@
    align-items: center;
    justify-content: flex-start;
    flex-direction: column;
-   gap: 10px;
+   gap: 16px;
    padding: 20px 32px;
    height: calc(100vh - 9vh);
    overflow-y: scroll;
@@ -15,10 +15,11 @@
    width: 50%;
    background-color: #fff;
    border-radius: 10px;
+   padding: 8px 0;
 }
 .user-profile-container {
    position: relative;
-   height: 75px;
+   height: 60px;
    margin: 0 12px;
    display: flex;
    align-items: center;
@@ -140,7 +141,7 @@
    align-items: center;
    justify-content: center;
 }
-.outer-display-edit-div .item .item-icon i {
+.outer-display-edit-div .item .item-icon svg {
    font-size: 18px;
 }
 .outer-display-edit-div .item .item-contents {
@@ -160,5 +161,80 @@
 .outer-display-edit-div .item .item-contents p:nth-child(2) {
    font-size: 12px;
    font-weight: 400;
+}
+.close_action {
+   position: absolute;
+   right: 4px;
+   top: 4px;
+   z-index: 999;
+   padding: 4px;
+   border-radius: 50%;
+}
+.close_action:hover {
+   background-color: #ddd;
+}
+.user_post_text {
+   margin: 0 12px;
+   padding: 6px 0;
+}
+.user_post_text p {
+   font-size: 15px;
+}
+.user_post_img {
+   padding: 12px 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-top: 1px solid #ddd;
+   /* border-bottom: 1px solid #ddd; */
+   /* border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px; */
+}
+.user_post_img img {
+   margin: 0 12px;
+   width: 90%;
+}
+
+
+
+.user_react_contents {
+   margin: 0 12px;
+   padding: 8px 16px;
+}
+.comment_like_share {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.comment_like_share .bxs-like {
+   height: 18px;
+   color: #494747;
+}
+.comment_like_share .bxs-like {
+   transition: all 0.1s ease;
+   font-size: 19px;
+   color: #3333f3;
+}
+.comment_like_share form {
+   width: 180px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 40px;
+   font-size: 18px;
+   transition-delay: 0.1s;
+   cursor: pointer;
+   border-radius: 5px;
+}
+.comment_like_share form:hover {
+   background-color: #ddd;
+}
+.comment_like_share form i {
+   color: #2e2e2e;
+   font-size: 18px;
+}
+.comment_like_share form span {
+   margin-left: 5px;
+   font-size: 14px;
 }
 /************ Posts css ends *****************/

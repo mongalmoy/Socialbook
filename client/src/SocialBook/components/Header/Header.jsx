@@ -1,8 +1,11 @@
 import { Button, Container, Form, NavDropdown, Navbar } from "react-bootstrap";
 import "./Header.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const [showUserInfo, setShowUserInfo] = useState(false);
 
   useEffect(() => {
@@ -20,7 +23,7 @@ const Header = () => {
     <header className="header">
       <Navbar className="bg-body-tertiary">
         <div className="nav_container mx-3">
-          <Navbar.Brand className="flexbox">
+          <Navbar.Brand id="AppName" className="flexbox" onClick={() => navigate("/register")}>
             <img
               alt=""
               src={
@@ -57,9 +60,9 @@ const Header = () => {
               {[
                 { name: "Account", link: "/account" },
                 { name: "Edit Account", link: "/editaccount" },
-                { name: "Inbox", link: "/inbox" },
+                // { name: "Inbox", link: "/inbox" },
                 { name: "My Posts", link: "/myposts" },
-                { name: "Jolufamily", link: "/jolufamily" },
+                // { name: "Jolufamily", link: "/jolufamily" },
                 { name: "Logout", link: "/logout" },
               ].map((item, index) => {
                 return (

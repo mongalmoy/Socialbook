@@ -8,6 +8,9 @@
    align-items: center;
    justify-content: space-between;
 }
+#AppName {
+   cursor: pointer;
+}
 #navbarNav {
    font-size: 25px;
    width: 100%;

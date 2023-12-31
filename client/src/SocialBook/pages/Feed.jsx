@@ -4,6 +4,7 @@ const Feed = () => {
   return (
     <div className="feed" id="feed">
       <Post />
+      {/* <Post /> */}
     </div>
   );
 };
