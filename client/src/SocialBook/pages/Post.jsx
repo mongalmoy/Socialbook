@@ -6,16 +6,19 @@ import { LuCopyPlus, LuCopyCheck } from "react-icons/lu";
 import { FaEdit, FaBookmark } from "react-icons/fa";
 import { MdDeleteOutline, MdOutlineComment } from "react-icons/md";
 import { AiOutlineLike } from "react-icons/ai";
+import { Form } from "react-bootstrap";
 
 
 
 const Post = () => {
   const [showActions, setShowActions] = useState(false);
+  const [likesCount, setLikesCount] = useState(0);
+  
   return (
     <div className="post">
-      <div class="user-profile-container">
+      <div className="user-profile-container">
         <div className="user_img_info flexbox">
-          <div class="user-img">
+          <div className="user-img">
             <img
               src={
                 "https://media.licdn.com/dms/image/D4D03AQFDcMZSbhGvzQ/profile-displayphoto-shrink_100_100/0/1699540234943?e=1709164800&v=beta&t=mNoDa6PaKU3ZV6QBLBQA3UhWyalapxTEgpQkaZ0bgXQ"
@@ -24,21 +27,21 @@ const Post = () => {
             />
           </div>
 
-          <div class="user-info">
-            <p class="user-name">Mongalmoy</p>
-            <p class="user-bio">Time: </p>
+          <div className="user-info">
+            <p className="user-name">Mongalmoy</p>
+            <p className="user-bio">Time: </p>
           </div>
         </div>
-        {/* <div class="post-time-div">
-          <i class="fas fa-globe-asia"></i>
+        {/* <div className="post-time-div">
+          <i className="fas fa-globe-asia"></i>
           <p>time</p>
         </div> */}
 
-        <div class="three-dots">
+        <div className="three-dots">
           <BiDotsVerticalRounded onClick={() => setShowActions(true)} />
           {showActions && (
-            <div class="outer-display-edit-div">
-              <div class="inner-display-edit-div">
+            <div className="outer-display-edit-div">
+              <div className="inner-display-edit-div">
                 <div
                   className="close_action flexbox"
                   onClick={() => setShowActions(false)}
@@ -77,13 +80,13 @@ const Post = () => {
                   },
                 ].map((el, index) => {
                   return (
-                    <div class="item">
-                      <div class="item-icon">
+                    <div className="item">
+                      <div className="item-icon">
                         {el.isActionTaken
                           ? el.icon_after_action
                           : el.icon_before_action}
                       </div>
-                      <div class="item-contents">
+                      <div className="item-contents">
                         <div>
                           <p>{el.name}</p>
                         </div>
@@ -112,17 +115,17 @@ const Post = () => {
       </div>
 
       <div className="user_react_contents">
-        <div class="comment_like_share">
-          <form action="/addlike" method="post" onclick="submit()">
+        <div className="comment_like_share">
+          <Form onClick={() => setLikesCount(prevCnt => prevCnt+1)}>
             <AiOutlineLike />
-            <span class="countLikes"></span>
+            <span className="countLikes">{likesCount>0 ? likesCount : null}</span>
             <span>Like</span>
-          </form>
-          <form action="/addcomment">
+          </Form>
+          <Form>
             <MdOutlineComment />
             <span id="countComment"></span>
             <span>Comment</span>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

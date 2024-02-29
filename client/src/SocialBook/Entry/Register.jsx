@@ -1,23 +1,30 @@
 import { useState } from "react";
 import "./Entry.css";
+import "react-toastify/dist/ReactToastify.css";
 import { Col, Row, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { apis } from "../service/constant";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const [formInfo, setFormInfo] = useState({
+    firstName: "",
+    lastName: "",
     username: "",
     email: "",
     password: "",
-  })
-  const [errors, setErrors] = useState(null)
+  });
+  const [errors, setErrors] = useState(null);
 
   console.log("formInfo", formInfo);
   console.log("errors", errors);
 
   const validateEmail = (email) => {
-    console.log(email.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/));
+    console.log(
+      email.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/)
+    );
     return String(email)
       .toLowerCase()
       .match(
@@ -25,18 +32,33 @@ const Register = () => {
       );
   };
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    console.log(formInfo);
+    const submitDetails = await fetch(apis.baseUrl + "/register", {
+      method: "POST",
+      body: JSON.stringify(formInfo),
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+    });
 
-    if(!!!formInfo.username) setErrors(prev => ({...prev, username: "please enter username"}));
-    else setErrors(prev => ({username: ""}));
+    const submitDetailsRes = await submitDetails.json();
 
-    if(!!!formInfo.email) setErrors(prev => ({...prev, email: "please enter email"}));
-    // else if(validateEmail(formInfo.email)) setErrors(prev => ({...prev, email: "please enter valid email"}));
-    else setErrors(prev => ({email: ""}));
+    console.log(submitDetailsRes);
+    if (submitDetailsRes.retrunStr === "error") {
+      toast.warning(submitDetailsRes?.actions?.errorMsg);
+    } else {
+      toast.success(submitDetailsRes?.actions?.successMsg);
+      navigate("/feed");
+    }
+  }
 
-    if(!!!formInfo.password) setErrors(prev => ({...prev, password: "please enter password"}));
-    else setErrors(prev => ({password: ""}));
+  function handleChangeInput(e) {
+    setFormInfo((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   }
 
   return (
@@ -64,6 +86,30 @@ const Register = () => {
                   <div className="heading-div">
                     <h1>Register Here</h1>
                   </div>
+                  <div className="input-email flexbox">
+                    <input
+                      placeholder="First Name"
+                      type="text"
+                      name="firstName"
+                      className="me-1"
+                      required
+                      minLength={1}
+                      maxLength={12}
+                      onChange={(e) => handleChangeInput(e)}
+                      value={formInfo.firstName}
+                    />
+                    <input
+                      placeholder="Last Name"
+                      type="text"
+                      name="lastName"
+                      className="ms-1"
+                      required
+                      minLength={0}
+                      maxLength={12}
+                      onChange={(e) => handleChangeInput(e)}
+                      value={formInfo.lastName}
+                    />
+                  </div>
                   <div className="input-email">
                     <input
                       placeholder="Username"
@@ -72,7 +118,8 @@ const Register = () => {
                       required
                       minLength={6}
                       maxLength={12}
-                      onChange={(e) => setFormInfo(prev => ({...prev, [e.target.name]: e.target.value}))}
+                      onChange={(e) => handleChangeInput(e)}
+                      value={formInfo.username}
                     />
                   </div>
                   <div className="input-email" style={{ display: "flex" }}>
@@ -81,10 +128,15 @@ const Register = () => {
                       type="email"
                       name="email"
                       required
-                      onChange={(e) => setFormInfo(prev => ({...prev, [e.target.name]: e.target.value}))}
+                      onChange={(e) => handleChangeInput(e)}
+                      value={formInfo.email}
                     />
-                    <span id="registerPageVerifyButton" onClick={null // otpPopup
-                    }>
+                    <span
+                      id="registerPageVerifyButton"
+                      onClick={
+                        null // otpPopup
+                      }
+                    >
                       Verify
                     </span>
                     <div className="verified">
@@ -109,7 +161,8 @@ const Register = () => {
                       name="password"
                       minLength={6}
                       required
-                      onChange={(e) => setFormInfo(prev => ({...prev, [e.target.name]: e.target.value}))}
+                      onChange={(e) => handleChangeInput(e)}
+                      value={formInfo.password}
                     />
                   </div>
                   <div className="align_right">
@@ -131,6 +184,18 @@ const Register = () => {
           </div>
         </Col>
       </Row>
+      <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
