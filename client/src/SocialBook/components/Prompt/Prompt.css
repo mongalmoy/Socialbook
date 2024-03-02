@@ -1,0 +1,46 @@
+.delete-account-div {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: #302c2c;
+  color: #fff;
+  padding: 16px;
+}
+
+.delete-account-div h4 {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 26px;
+}
+
+.delete-account-div div {
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-account-div div button {
+  padding: 8px 16px;
+  background-color: #252525;
+  margin: 0 15px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.delete-account-div div button:nth-child(1) {
+  background-color: #106826;
+}
+
+.delete-account-div div button:nth-child(2) {
+  background-color: #e90000;
+}
+
+.delete-account-div div button:hover {
+  opacity: 1;
+}

@@ -13,9 +13,13 @@ const AppMainRoute = () => {
         <Route path="/login" element={<Entry page="login" />} />
 
         <Route path="/about" element={<About />} />
+        
         <Route path="/feed" element={<Container />}>
           <Route index element={<Feed />} />
-          <Route element={<UserAccount />} />
+        </Route>
+
+        <Route path="/account" element={<Container />}>
+          <Route index element={<UserAccount />} />
         </Route>
       </Routes>
     </BrowserRouter>
