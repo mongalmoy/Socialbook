@@ -1,0 +1,286 @@
+/******************* Acoount edit Page Starts *****************/
+.account-page {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.account-page-heading-list {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10;
+  z-index: 100;
+  position: fixed;
+}
+
+.account-page-heading-list div {
+  width: 800px;
+}
+
+.account-page-heading-list ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.account-page-heading-list ul li a {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  padding: 5px 15px;
+  background-color: #fff;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.account-page-heading-list ul li a.active::after {
+  position: absolute;
+  content: "";
+  width: 200px;
+  height: 5px;
+  background-color: #3333f3;
+  left: 0;
+  bottom: -5px;
+  opacity: 1;
+  transition: all 0.5s ease-out;
+}
+
+.account-page-section {
+  position: relative;
+  width: 100vw;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.account-page-edit-section {
+  position: absolute;
+  top: 46px;
+  width: 100vw;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  width: 4px;
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #15171d;
+}
+
+.account-page-edit-container {
+  width: 800px;
+  background-color: #fff;
+  padding: 0 40px;
+  padding-bottom: 50px;
+  overflow-y: scroll;
+}
+
+.account-page-edit-container div {
+  padding: 15px 0;
+  padding-bottom: 0;
+}
+
+.account-page-name-img {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px dashed #5a5a5a;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.account-page-name-img .img {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 4px solid #ddd;
+}
+
+.account-page-name-img .img img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.account-page-name-img .img .upload-remove {
+  position: absolute;
+  left: 100px;
+  bottom: -20px;
+  padding: 4px;
+  background-color: #fff;
+  box-shadow: 0 0 5px #5c6063;
+  z-index: 9;
+  width: 150px;
+  border-radius: 6px;
+  display: none;
+}
+
+.account-page-name-img .img .upload-remove p {
+  margin: 0;
+  padding: 4px 8px;
+  color: #475455;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.account-page-name-img .img .upload-remove p:hover {
+  background-color: #ddd;
+}
+
+.account-page-name-img .img .camera-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ddd;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.account-page-name-img .img .camera-icon:hover {
+  opacity: 1;
+}
+
+.account-page-name-img .img .camera-icon i {
+  opacity: 1;
+  font-size: 24px;
+  position: relative;
+}
+
+.account-page-name-img .name {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.account-page-name-img .name h4 {
+  font-weight: 600;
+  font-size: 40px;
+  padding-left: 15px;
+  line-height: 60px;
+  font-family: 'Lobster', cursive;
+}
+
+.save-button {
+  padding: 8px 24px;
+  border: none;
+  font-size: 14px;
+  color: #fff;
+  background-color: #3434cf;
+  opacity: 0.8;
+  width: 96px;
+}
+
+.save-button:hover {
+  opacity: 1;
+}
+
+.delete-button {
+  padding: 8px 24px;
+  border: none;
+  font-size: 14px;
+  color: #fff;
+  background-color: #e90000;
+  opacity: 0.8;
+  font-weight: 500;
+  margin-left: 16px;
+}
+
+.delete-button:hover {
+  opacity: 1;
+  font-weight: 500;
+}
+
+.accountedit-hr {
+  border: 0;
+  margin: 20px 0;
+  padding: 0;
+  border-bottom: 2px dashed #ddd;
+}
+
+.accountedit-section div h6 {
+  font-size: 15px;
+  color: #4d4d4d;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.accountedit-section .star {
+  color: red;
+  position: absolute;
+  transform: translate(3px, 12px);
+}
+
+.accountedit-section div p {
+  margin: 5px 0 0 0;
+  padding: 0;
+  font-size: 14px;
+  color: #4a4a4a;
+}
+
+.accountedit-section div input {
+  outline: none;
+  padding: 2px 5px;
+  width: 400px;
+  color: #4d4d4d;
+}
+
+.accountedit-section textarea {
+  outline: none;
+  padding: 2px 5px;
+  width: 400px;
+  color: #4d4d4d;
+  resize: none;
+}
+
+.gender-section {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.gender-section div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.gender-section div .radio {
+  width: 10px;
+  margin-right: 3px;
+  height: 20px;
+}
+
+.gender-section div label {
+  font-size: 16px;
+}
+/****************** Account edit page ends *************/

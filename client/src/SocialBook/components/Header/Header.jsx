@@ -2,6 +2,7 @@ import { Button, Container, Form, NavDropdown, Navbar } from "react-bootstrap";
 import "./Header.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import defaultUserDP from "../../assets/img/avatar.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -48,9 +49,7 @@ const Header = () => {
           <div className="flexbox user_account_details">
             <img
               alt=""
-              src={
-                "https://media.licdn.com/dms/image/D4D03AQFDcMZSbhGvzQ/profile-displayphoto-shrink_100_100/0/1699540234943?e=1709164800&v=beta&t=mNoDa6PaKU3ZV6QBLBQA3UhWyalapxTEgpQkaZ0bgXQ"
-              }
+              src={defaultUserDP}
               width="40"
               height="40"
               className="d-inline-block align-top"

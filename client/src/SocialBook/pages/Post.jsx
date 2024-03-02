@@ -110,7 +110,7 @@ const Post = () => {
           </p>
         </div>
         <div className="user_post_img">
-          <img src={require("../../assets/img/socialmedia.jpg")} alt="" />
+          <img src={require("../assets/img/socialmedia.jpg")} alt="" />
         </div>
       </div>
 

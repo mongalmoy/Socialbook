@@ -1,3 +1,3 @@
 export const apis = {
-  baseUrl : "http://localhost:8000"
+  baseUrl : "http://localhost:8000/"
 }

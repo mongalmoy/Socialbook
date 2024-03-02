@@ -4,7 +4,7 @@
     rgb(7, 161, 189),
     rgb(28, 29, 124)
   ); */
-  background-image: url("../../assets/img/socialmedia1.jpg");
+  background-image: url("../assets/img/socialmedia1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   z-index: 0;
@@ -218,4 +218,13 @@
 }
 .right-div .convert-div p b {
   cursor: pointer;
+  color: #0969c2;
+}
+.right-div .convert-div p b:hover {
+  text-decoration: underline;
+}
+.spinner_btn {
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }

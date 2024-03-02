@@ -1,27 +1,26 @@
 import { useState } from "react";
 import "./Entry.css";
 import "react-toastify/dist/ReactToastify.css";
-import { Col, Row, Form } from "react-bootstrap";
+import { Col, Row, Form, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { apis } from "../service/constant";
 import Loader from "../components/Loader/Loader";
+import { formInfoSchema } from "../Data/Entry/entryPageData";
 
 const Entry = ({ page }) => {
   const navigate = useNavigate();
 
-  const [formInfo, setFormInfo] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    password: "",
-  });
+  const [formInfo, setFormInfo] = useState(formInfoSchema);
   const [errors, setErrors] = useState(null);
   const [showLoader, setShowLoader] = useState(false);
 
   console.log("formInfo", formInfo);
   console.log("errors", errors);
+
+  function resetFormInfo() {
+    setFormInfo({ ...formInfoSchema });
+  }
 
   const validateEmail = (email) => {
     console.log(
@@ -36,33 +35,47 @@ const Entry = ({ page }) => {
 
   console.log(showLoader);
 
-  async function doRegister(e) {
-    e.preventDefault();
-    console.log(formInfo);
-    setShowLoader(true);
-    const submitDetails = await fetch(apis.baseUrl + "/register", {
+  async function doPOST(endpoint) {
+    const response = await fetch(apis.baseUrl + endpoint, {
       method: "POST",
       body: JSON.stringify(formInfo),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
     });
+    const resJosn = await response.json();
+    return resJosn;
+  }
+
+  async function doRegister(e) {
+    e.preventDefault();
+
+    setShowLoader(true);
+    const registerRes = await doPOST("register");
     setShowLoader(false);
 
-    const submitDetailsRes = await submitDetails.json();
-
-    if (submitDetailsRes.retrunStr === "error") {
-      toast.warning(submitDetailsRes?.actions?.errorMsg);
+    if (registerRes.retrunStr === "error") {
+      toast.warning(registerRes?.actions?.errorMsg);
     } else {
-      toast.success(submitDetailsRes?.actions?.successMsg);
-      setTimeout(() => {
-        navigate("/feed");
-      }, 2000)
+      toast.success(registerRes?.actions?.successMsg);
+      navigate("/feed");
     }
   }
 
   async function doLogin(e) {
+    e.preventDefault();
 
+    setShowLoader(true);
+    const loginRes = await doPOST("login");
+    setShowLoader(false);
+
+    if (loginRes.retrunStr === "error") {
+      toast.warning(loginRes?.actions?.errorMsg);
+    } else {
+      toast.success(loginRes?.actions?.successMsg);
+      sessionStorage.setItem("jwt", loginRes.responseBody?.jwt || "")
+      navigate("/feed");
+    }
   }
 
   function handleChangeInput(e) {
@@ -187,10 +200,23 @@ const Entry = ({ page }) => {
                       value={formInfo.password}
                     />
                   </div>
+
                   <div className="align_right">
-                    <button className="primary_btn" type="submit">
-                      {page === "login" ? "Login" : "Register"}
-                    </button>
+                    {showLoader ? (
+                      <button className="primary_btn spinner_btn px-3">
+                        <Spinner
+                          size="sm"
+                          animation="border"
+                          variant="light"
+                          className="me-2"
+                        />
+                        Fetching...
+                      </button>
+                    ) : (
+                      <button className="primary_btn" type="submit">
+                        {page === "login" ? "Login" : "Register"}
+                      </button>
+                    )}
                   </div>
                 </div>
               </Form>
@@ -203,6 +229,7 @@ const Entry = ({ page }) => {
                 <b
                   className="ms-2"
                   onClick={() => {
+                    resetFormInfo();
                     if (page === "login") navigate("/register");
                     else navigate("/login");
                   }}
@@ -226,7 +253,7 @@ const Entry = ({ page }) => {
         pauseOnHover
         theme="light"
       />
-      {showLoader ? <Loader /> : null}
+      {/* {showLoader ? <Loader /> : null} */}
     </div>
   );
 };
