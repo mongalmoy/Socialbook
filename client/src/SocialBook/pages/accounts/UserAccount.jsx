@@ -1,6 +1,6 @@
 import './Account.css';
 
-const Account = () => {
+const UserAccount = () => {
   return (
     <div class="account-page" id="accountpage">
       <div class="account-page-section">
@@ -10,4 +10,4 @@ const Account = () => {
   )
 }
 
-export default Account;
+export default UserAccount;
