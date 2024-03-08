@@ -19,14 +19,34 @@
   align-items: center;
   justify-content: flex-end;
 }
+.error_msg {
+  font-size: 12px !important;
+  color: red !important;
+  margin: 0 !important;
+  margin-left: 4px !important;
+}
 .primary_btn {
   outline: none;
   border: none;
   width: 150px;
   height: 40px;
   border-radius: 6px;
-  background-color: #475455;
+  background-color: #2579ff;
   color: #fff;
   font-weight: 400;
   letter-spacing: 1px;
+}
+.secondary_btn {
+  outline: none;
+  border: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #686868;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.primary_btn:hover {
+  background-color: #116cff;
 }

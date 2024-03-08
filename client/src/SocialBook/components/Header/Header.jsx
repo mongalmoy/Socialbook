@@ -57,7 +57,7 @@ const Header = () => {
             <Navbar.Text id="user_name">Mongalmoy</Navbar.Text>
             <ul className={`user_dropdown dropdown-menu ${showUserInfo ? "show_dropdown" : "hide_dropdown"}`} id="navlinkDropdown">
               {[
-                { name: "Account", link: "/account" },
+                { name: "Account", link: "/user-account" },
                 { name: "Edit Account", link: "/editaccount" },
                 // { name: "Inbox", link: "/inbox" },
                 { name: "My Posts", link: "/myposts" },

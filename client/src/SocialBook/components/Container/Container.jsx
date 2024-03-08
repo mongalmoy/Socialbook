@@ -1,5 +1,9 @@
 import "./Container.css";
 import "react-toastify/dist/ReactToastify.css";
+import 'bootstrap/dist/css/bootstrap.css';
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
+
 import Header from "../Header/Header";
 import Feed from "../../pages/Feed";
 import { ToastContainer } from "react-toastify";
@@ -10,7 +14,9 @@ const Container = () => {
     <>
       <div className="container_box">
         <Header />
-        <Outlet />
+        <div className="container_body_container">
+          <Outlet />
+        </div>
       </div>
       <ToastContainer
         position="top-center"

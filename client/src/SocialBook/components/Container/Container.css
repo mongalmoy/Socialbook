@@ -1,3 +1,7 @@
+.container_body_container {
+   min-height: calc(100vh - 9vh);
+}
+
 #feed {
    display: flex;
    align-items: center;

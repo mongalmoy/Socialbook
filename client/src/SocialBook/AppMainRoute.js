@@ -4,6 +4,7 @@ import Feed from "./pages/Feed";
 import Container from "./components/Container/Container";
 import Entry from "./Entry/Entry";
 import UserAccount from "./pages/accounts/UserAccount";
+import EditAccount from "./pages/accounts/EditAccount";
 
 const AppMainRoute = () => {
   return (
@@ -18,8 +19,9 @@ const AppMainRoute = () => {
           <Route index element={<Feed />} />
         </Route>
 
-        <Route path="/account" element={<Container />}>
+        <Route path="/user-account" element={<Container />}>
           <Route index element={<UserAccount />} />
+          <Route path="edit" element={<EditAccount />} />
         </Route>
       </Routes>
     </BrowserRouter>

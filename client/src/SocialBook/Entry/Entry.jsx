@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { apis } from "../service/constant";
 import Loader from "../components/Loader/Loader";
 import { formInfoSchema } from "../Data/Entry/entryPageData";
+import { doPOST } from "../common/apicalling/doPOST";
 
 const Entry = ({ page }) => {
   const navigate = useNavigate();
@@ -35,29 +36,20 @@ const Entry = ({ page }) => {
 
   console.log(showLoader);
 
-  async function doPOST(endpoint) {
-    const response = await fetch(apis.baseUrl + endpoint, {
-      method: "POST",
-      body: JSON.stringify(formInfo),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    });
-    const resJosn = await response.json();
-    return resJosn;
-  }
-
   async function doRegister(e) {
     e.preventDefault();
 
     setShowLoader(true);
-    const registerRes = await doPOST("register");
+    const registerRes = await doPOST("register", formInfo);
     setShowLoader(false);
 
     if (registerRes.retrunStr === "error") {
       toast.warning(registerRes?.actions?.errorMsg);
     } else {
       toast.success(registerRes?.actions?.successMsg);
+      sessionStorage.setItem("jwt", registerRes.responseBody?.jwt || "");
+      sessionStorage.setItem("username", registerRes.responseBody?.userDetails?.username || "");
+      sessionStorage.setItem("email", formInfo.email);
       navigate("/feed");
     }
   }
@@ -66,14 +58,16 @@ const Entry = ({ page }) => {
     e.preventDefault();
 
     setShowLoader(true);
-    const loginRes = await doPOST("login");
+    const loginRes = await doPOST("login", formInfo);
     setShowLoader(false);
 
     if (loginRes.retrunStr === "error") {
       toast.warning(loginRes?.actions?.errorMsg);
     } else {
       toast.success(loginRes?.actions?.successMsg);
-      sessionStorage.setItem("jwt", loginRes.responseBody?.jwt || "")
+      sessionStorage.setItem("jwt", loginRes.responseBody?.jwt || "");
+      sessionStorage.setItem("username", loginRes.responseBody?.userDetails?.username || "")
+      sessionStorage.setItem("email", formInfo.email);
       navigate("/feed");
     }
   }
@@ -124,6 +118,7 @@ const Entry = ({ page }) => {
                           maxLength={12}
                           onChange={(e) => handleChangeInput(e)}
                           value={formInfo.firstName}
+                          autoComplete="off"
                         />
                         <input
                           placeholder="Last Name"
@@ -135,6 +130,7 @@ const Entry = ({ page }) => {
                           maxLength={12}
                           onChange={(e) => handleChangeInput(e)}
                           value={formInfo.lastName}
+                          autoComplete="off"
                         />
                       </div>
                       <div className="input-email">
@@ -147,6 +143,7 @@ const Entry = ({ page }) => {
                           maxLength={12}
                           onChange={(e) => handleChangeInput(e)}
                           value={formInfo.username}
+                          autoComplete="off"
                         />
                       </div>
                     </>
@@ -160,6 +157,7 @@ const Entry = ({ page }) => {
                       required
                       onChange={(e) => handleChangeInput(e)}
                       value={formInfo.email}
+                      autoComplete="off"
                     />
 
                     {page === "login" ? null : (
@@ -198,12 +196,13 @@ const Entry = ({ page }) => {
                       required
                       onChange={(e) => handleChangeInput(e)}
                       value={formInfo.password}
+                      autoComplete="off"
                     />
                   </div>
 
                   <div className="align_right">
                     {showLoader ? (
-                      <button className="primary_btn spinner_btn px-3">
+                      <button className="secondary_btn spinner_btn px-3">
                         <Spinner
                           size="sm"
                           animation="border"
@@ -213,7 +212,7 @@ const Entry = ({ page }) => {
                         Fetching...
                       </button>
                     ) : (
-                      <button className="primary_btn" type="submit">
+                      <button className="secondary_btn" type="submit">
                         {page === "login" ? "Login" : "Register"}
                       </button>
                     )}
